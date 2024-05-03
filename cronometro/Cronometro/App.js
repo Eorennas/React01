@@ -36,14 +36,32 @@ export default function App() {
           hh++;
         }
 
-        
-      }, 100)
+        let format = (hh<10? '0' + hh: hh) + ':'
+         + ( mm <10 ? '0' + mm: mm)+ ':'
+         +(ss<10 ? '0' + ss:ss); 
+
+         setNumero(format);
+
+
+      }, 1000);
+      setBotao('Parar');
     }
 
   }
 
 
   function limpar(){
+    if(timer!==null){
+      clearInterval(timer);
+      timer=null;
+    }
+
+    setUltimo(numero);
+    setNumero(0);
+    ss=0;
+    mm=0;
+    hh=0;
+    setBotao('Vai');
 
   }
 
