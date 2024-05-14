@@ -1,26 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import React from "react";
+
+import { NavigationContainer } from '@react-navigation/native';
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+
+
+import Home from './src/pages/Home';
+import Sobre from './src/pages/Sobre';
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Rennan Alves </Text>
-      <FontAwesome
-      name='home'
-      size={25}
-      />
-
-      <StatusBar style="auto" />
-    </View>
-  );
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: 'Tela inicio'
+          }}
+        />
+        <Stack.Screen
+          name="Sobre"
+          component={Sobre}
+          options={{
+            title: 'Pagina sobre'
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
